@@ -27,7 +27,7 @@ app.post("/quartos", (req, res) => {
 app.delete("/quartos/:id", (req, res) => {
   const id = req.params.id;
   const deletarQuarto = "DELETE FROM quartos WHERE id = ?";
-  conexao.query(deletarQuarto, id, (erro, resultado) => {
+  conexao.query(deletarQuarto, id, (erro, resultado)=> {
     if (erro) {
       res.status(404).json({ erro: erro });
     } else {
