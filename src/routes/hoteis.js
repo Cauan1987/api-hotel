@@ -1,7 +1,7 @@
 import { app } from "../app.js";
 import conexao from "../models/conexao.js";
 
-app.get("/hotel", (req, res) => {
+app.get("/hoteis", (req, res) => {
   const hoteis = "SELECT * FROM hoteis";
   conexao.query(hoteis, (erro, resultado) => {
     if (erro) {
@@ -12,7 +12,7 @@ app.get("/hotel", (req, res) => {
   });
 });
 
-app.post("/hotel", (req, res) => {
+app.post("/hoteis", (req, res) => {
   const novoHotel = req.body;
   const adicionarNovoHotel = "INSERT INTO hoteis SET ?";
   conexao.query(adicionarNovoHotel, novoHotel, (erro, resultado) => {
@@ -24,7 +24,7 @@ app.post("/hotel", (req, res) => {
   });
 });
 
-app.delete("/hotel/:id", (req, res) => {
+app.delete("/hoteis/:id", (req, res) => {
   const id = req.params.id;
   const deletarHotel = "DELETE FROM hoteis WHERE id = ?";
   conexao.query(deletarHotel, id, (erro, resultado) => {
@@ -36,7 +36,7 @@ app.delete("/hotel/:id", (req, res) => {
   });
 });
 
-app.put("/hotel/:id", (req, res) => {
+app.put("/hoteis/:id", (req, res) => {
   const id = req.params.id;
   const novoHotel = req.body;
   const alterarHotel = "UPDATE hoteis SET ? WHERE id = ?";

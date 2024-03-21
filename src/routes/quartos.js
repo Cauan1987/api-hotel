@@ -24,18 +24,6 @@ app.post("/quartos", (req, res) => {
   });
 });
 
-app.delete("/quartos/:id", (req, res) => {
-  const id = req.params.id;
-  const deletarQuarto = "DELETE FROM quartos WHERE id = ?";
-  conexao.query(deletarQuarto, id, (erro, resultado)=> {
-    if (erro) {
-      res.status(404).json({ erro: erro });
-    } else {
-      res.status(200).json(resultado);
-    }
-  });
-});
-
 app.put("/quartos/:id", (req, res) => {
   const id = req.params.id;
   const novoQuarto = req.body;
@@ -48,3 +36,15 @@ app.put("/quartos/:id", (req, res) => {
     }
   });
 });
+app.delete("/quartos/:id", (req, res) => {
+  const id = req.params.id;
+  const deletarQuarto = "DELETE FROM quartos WHERE id = ?";
+  conexao.query(deletarQuarto, id, (erro, resultado) => {
+    if (erro) {
+      res.status(404).json({ erro: erro });
+    } else {
+      res.status(200).json(resultado);
+    }
+  });
+});
+
